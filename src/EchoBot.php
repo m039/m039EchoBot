@@ -24,7 +24,12 @@ $bot->onCommand('start', function(Nutgram $bot) {
 });
 
 $bot->onUpdate(function (Nutgram $bot) {
-    $bot->sendMessage($bot->message()->getText());
+    $text = $bot->message()->getText();
+    if (strpos($text, "/start") === 0) {
+        return;
+    }
+    
+    $bot->sendMessage($text);
 });
 
 $bot->run();
