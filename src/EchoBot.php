@@ -28,3 +28,5 @@ $bot->onText("*", function (Nutgram $bot, string $text) {
 });
 
 $bot->run();
+
+echo "Ok";
