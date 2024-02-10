@@ -5,6 +5,7 @@ namespace m039;
 require __DIR__ . '/../vendor/autoload.php';
 
 use m039\DB\DBManager;
+use m039\Utils\Logger;
 use SergiX44\Nutgram\Nutgram;
 use SergiX44\Nutgram\Configuration;
 use SergiX44\Nutgram\RunningMode\Webhook;
@@ -15,6 +16,7 @@ if (!$config) {
 }
 
 $db = DBManager::createInstance($config);
+$logger = Logger::createInstance($config);
 
 $bot = new Nutgram($config->get("TOKEN"), new Configuration(enableHttp2: false));
 
@@ -28,15 +30,20 @@ $bot->onCommand('start', function(Nutgram $bot) {
 
 $bot->onUpdate(function (Nutgram $bot) {
     global $db;
+    global $logger;
 
-    $db->insertOrUpdateEntry($bot->userId(), $bot->chatId(), $bot->message()->getText(), $bot->user()->first_name);
+    try {
+        $db->insertOrUpdateEntry($bot->userId(), $bot->chatId(), $bot->message()->getText(), $bot->user()?->first_name);
 
-    $text = $bot->message()->getText();
-    if (strpos($text, "/start") === 0) {
-        return;
+        $text = $bot->message()->getText();
+        if (strpos($text, "/start") === 0) {
+            return;
+        }
+        
+        $bot->sendMessage($text);
+    } catch (\Exception $e) {
+        $logger->log($e->getMessage() . "\n\n");
     }
-    
-    $bot->sendMessage($text);
 });
 
 $bot->run();
