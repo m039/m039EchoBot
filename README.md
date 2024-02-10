@@ -14,6 +14,7 @@ composer install
 # Add configuration parameters.
 echo "TOKEN=..." > .config.ini
 echo "WEBHOOK_SECRET=..." >> .config.ini
+echo "SQLITE_DATABASE=..." >> .config.ini # Absolute paths only
 
 # Set the webhook url.
 composer setup-webhook --set "..."
