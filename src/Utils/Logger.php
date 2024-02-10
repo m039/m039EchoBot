@@ -5,7 +5,7 @@ namespace m039\Utils;
 use m039\Config;
 
 class Logger {
-    private string $logfile;
+    private string | null $logfile;
 
     public function __construct(string | null $logfile) {
         $this->logfile = $logfile;
