@@ -23,7 +23,7 @@ $bot->onCommand('start', function(Nutgram $bot) {
     $bot->sendMessage('Присылайте сообщение боту и он отправит вам его обратно.');
 });
 
-$bot->onText("*", function (Nutgram $bot, string $text) {
+$bot->onText(null, function (Nutgram $bot, string $text) {
     $bot->sendMessage($text);
 });
 
