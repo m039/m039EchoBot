@@ -29,7 +29,7 @@ $bot->onCommand('start', function(Nutgram $bot) {
 $bot->onUpdate(function (Nutgram $bot) {
     global $db;
 
-    $db->insertOrUpdateEntry($bot->userId(), $bot->chatId(), $bot->message(), $bot->user()->first_name);
+    $db->insertOrUpdateEntry($bot->userId(), $bot->chatId(), $bot->message()->getText(), $bot->user()->first_name);
 
     $text = $bot->message()->getText();
     if (strpos($text, "/start") === 0) {
