@@ -1,0 +1,10 @@
+{
+    "require": {
+        "nutgram/nutgram": "^4.15"
+    },
+    "autoload": {
+        "psr-4": {
+          "m039\\": "src/"
+        }
+    }
+}
