@@ -6,6 +6,7 @@ composer.phar
 # composer.lock
 
 .config.ini
+.config.*.ini
 .vscode
 databases
 errors.logs

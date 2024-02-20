@@ -1,0 +1,12 @@
+services:
+  bot:
+    build: .
+    user: root
+    ports:
+      - 8080:80
+    volumes:
+      - .config.ini:/var/www/html/.config.ini
+      - echo-data:/var/lib/echo-bot
+
+volumes:
+  echo-data:
