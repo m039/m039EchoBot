@@ -6,8 +6,8 @@ services:
       - 8081:80
     volumes:
       - .config.ini:/var/www/html/.config.ini
-      - echo-data:/var/lib/echo-bot
+      - bot-data:/var/lib/echo-bot
     restart: always
 
 volumes:
-  echo-data:
+  bot-data:
