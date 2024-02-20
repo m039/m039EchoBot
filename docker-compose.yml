@@ -3,7 +3,7 @@ services:
     build: .
     user: root
     ports:
-      - 8080:80
+      - 8081:80
     volumes:
       - .config.ini:/var/www/html/.config.ini
       - echo-data:/var/lib/echo-bot
