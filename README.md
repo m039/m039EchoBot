@@ -23,3 +23,20 @@ echo "LOGFILE=..." >> .config.ini # Absolute paths only. Can be omitted.
 composer setup-webhook --set "..."
 
 ```
+
+# Docker
+
+At the beginning, you should prepare ```.config.ini```. Just take ```.config-template.ini```, fill the empty fields and put it into ```.config.ini```.
+
+Use compose command to run the docker image:
+```shell
+docker compose up -d
+```
+
+The docker image can be run in nginx environment. You only need to add the lines below to ```nginx.conf```.
+
+```shell
+location /echo-bot {
+    proxy_pass http://localhost:8081/;
+}
+```
