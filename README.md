@@ -29,13 +29,13 @@ composer setup-webhook --set "..."
 At the beginning, you should prepare ```.config.ini```. Just take ```.config-template.ini```, fill the empty fields and put it into ```.config.ini```.
 
 Use compose command to run the docker image:
-```shell
+```bash
 docker compose up -d
 ```
 
 The docker image can be run in nginx environment. You only need to add the lines below to ```nginx.conf```.
 
-```shell
+```nginx
 location /echo-bot {
     proxy_pass http://localhost:8081/;
 }
